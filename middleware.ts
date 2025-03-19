@@ -1,6 +1,5 @@
 import {NextResponse} from 'next/server';
 import type {NextRequest} from 'next/server';
-import {TOKEN} from '@/constants/token';
 
 export function middleware(request: NextRequest) {
 	const path: string = request.nextUrl.pathname;
@@ -19,7 +18,7 @@ export function middleware(request: NextRequest) {
 	}
 
 	try {
-		if (token === TOKEN) {
+		if (token === process.env.JWT_SECRET) {
 			return NextResponse.next();
 		}
 	} catch (error) {

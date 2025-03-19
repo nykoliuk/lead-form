@@ -2,7 +2,6 @@ import {SafeParseReturnType, z} from 'zod';
 import {loginFormSchema} from '@/lib/schemas/login-form-schema';
 import {LoginFormData} from '@/types/login-form-data';
 import {cookies} from 'next/headers';
-import {TOKEN} from '@/constants/token';
 import {supabase} from '@/lib/db/supabase-client';
 
 export async function POST(request: Request): Promise<Response> {
@@ -33,7 +32,7 @@ export async function POST(request: Request): Promise<Response> {
 
 		(await cookies()).set({
 			name: 'auth_token',
-			value: TOKEN,
+			value: process.env.JWT_SECRET || '',
 			httpOnly: true,
 			path: '/',
 			maxAge: 60 * 60 * 24, // 1 day

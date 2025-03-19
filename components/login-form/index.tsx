@@ -23,8 +23,8 @@ import {FormError} from '@/styles/form/form-error';
 import {Button} from '@/styles/button';
 import {defaultLoginFormData} from '@/types/login-form-data';
 import {AlertCircle} from 'lucide-react';
-import {TOKEN} from '@/constants/token';
 
+const TOKEN: string = process.env.JWT_SECRET || '';
 type LoginFormValues = z.infer<typeof loginFormSchema>;
 export const LoginForm: FC = () => {
 	const router: AppRouterInstance = useRouter();
