@@ -13,7 +13,9 @@ import {
 	CardContent,
 	CardHeader,
 	CardTitle,
-	LoginContainer, LoginFormSection, PageLogo,
+	LoginContainer,
+	LoginFormSection,
+	PageLogo,
 	StyledCard,
 } from '@/components/login-form/styles';
 import {Alert, AlertIcon, AlertText} from '@/styles/alert';
@@ -28,11 +30,8 @@ const TOKEN: string = process.env.JWT_SECRET || '';
 type LoginFormValues = z.infer<typeof loginFormSchema>;
 export const LoginForm: FC = () => {
 	const router: AppRouterInstance = useRouter();
-	const searchParams: ReadonlyURLSearchParams = useSearchParams();
 	const [error, setError]: UseStateResult<string | null> = useState<string | null>(null);
 	const [isLoading, setIsLoading]: UseStateResult<boolean> = useState(false);
-
-	const redirectPath: string = searchParams.get('redirect') || '/dashboard';
 
 	const form: UseFormReturn<LoginFormValues> = useForm({
 		resolver: zodResolver(loginFormSchema),
@@ -77,10 +76,10 @@ export const LoginForm: FC = () => {
 				return;
 			}
 
-			Cookies.set('auth_token', TOKEN, { expires: 7, path: '/', sameSite: 'strict' });
+			Cookies.set('auth_token', TOKEN, {expires: 7, path: '/', sameSite: 'strict'});
 			localStorage.setItem('auth_token', TOKEN);
 			localStorage.setItem('user', JSON.stringify(data.user));
-			router.push(decodeURI(redirectPath));
+			router.push('/dashboard');
 		} catch (error: any) {
 			setError(error.message.includes('Invalid') ? error.message : 'An error occurred. Please try again.');
 			console.error(error);
@@ -94,23 +93,15 @@ export const LoginForm: FC = () => {
 			<PageLogo>almā</PageLogo>
 			<StyledCard>
 				<CardHeader>
-					<CardTitle>
-						Login
-					</CardTitle>
-					<p>
-						Enter your credentials to access the admin dashboard
-					</p>
+					<CardTitle>Login</CardTitle>
+					<p>Enter your credentials to access the admin dashboard</p>
 				</CardHeader>
 				<CardContent>
 					<FormProvider {...form}>
 						<form onSubmit={handleSubmit(onSubmit)} noValidate>
 							<LoginFormSection>
 								<FormGroup>
-									<FormInput
-										{...register('email')}
-										type="email"
-										placeholder="admin@example.com"
-									/>
+									<FormInput {...register('email')} type="email" placeholder="admin@example.com" />
 									{errors.email && (
 										<FormError role="alert">
 											{errors.email.message?.toString() || 'Invalid input'}
@@ -118,11 +109,7 @@ export const LoginForm: FC = () => {
 									)}
 								</FormGroup>
 								<FormGroup>
-									<FormInput
-										{...register('password')}
-										type="password"
-										placeholder="••••••"
-									/>
+									<FormInput {...register('password')} type="password" placeholder="••••••" />
 									{errors.password && (
 										<FormError role="alert">
 											{errors.password.message?.toString() || 'Invalid input'}
@@ -135,13 +122,11 @@ export const LoginForm: FC = () => {
 									<AlertIcon>
 										<AlertCircle size={20} />
 									</AlertIcon>
-									<AlertText>
-										{error}
-									</AlertText>
+									<AlertText>{error}</AlertText>
 								</Alert>
 							)}
 							<Button type="submit" disabled={isLoading}>
-								{isLoading ? "Logging in..." : "Login"}
+								{isLoading ? 'Logging in...' : 'Login'}
 							</Button>
 						</form>
 					</FormProvider>
@@ -149,4 +134,4 @@ export const LoginForm: FC = () => {
 			</StyledCard>
 		</LoginContainer>
 	);
-}
+};

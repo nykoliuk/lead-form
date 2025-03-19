@@ -4,6 +4,7 @@ import type {NextRequest} from 'next/server';
 export function middleware(request: NextRequest) {
 	const path: string = request.nextUrl.pathname;
 	const isDashboardRoute: boolean = path.startsWith('/dashboard');
+	const loginUrl: URL = new URL('/login', request.nextUrl.origin);
 
 	if (!isDashboardRoute) {
 		return NextResponse.next();
@@ -12,8 +13,6 @@ export function middleware(request: NextRequest) {
 	const token: string = request.cookies.get('auth_token')?.value || '';
 
 	if (!token) {
-		const loginUrl: URL = new URL('/login', request.url);
-		loginUrl.searchParams.set('returnUrl', path);
 		return NextResponse.redirect(loginUrl);
 	}
 
@@ -22,8 +21,6 @@ export function middleware(request: NextRequest) {
 			return NextResponse.next();
 		}
 	} catch (error) {
-		const loginUrl: URL = new URL('/login', request.url);
-		loginUrl.searchParams.set('returnUrl', path);
 		return NextResponse.redirect(loginUrl);
 	}
 }
