@@ -17,6 +17,14 @@ Features
 *   **Authentication**: Includes login and logout functionality. **(Need to check if the dashboard freezes after 
     login.)**
 
+Demo Credentials
+--------
+
+Use the following credentials to log in as an admin:
+
+**Email:** `admin@example.com`  
+**Password:** `admin123`
+
 Installation
 ------------
 
