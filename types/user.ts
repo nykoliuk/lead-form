@@ -5,3 +5,10 @@ export interface User {
 	role: string;
 	password?: string;
 }
+
+export const defaultUser: User = {
+	id: '1',
+	email: 'admin@example.com',
+	name: 'Admin',
+	role: 'admin',
+};

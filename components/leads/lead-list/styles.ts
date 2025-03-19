@@ -1,3 +1,5 @@
+'use client';
+
 import {FC, InputHTMLAttributes} from 'react';
 import styled, {keyframes} from 'styled-components';
 import {Keyframes} from 'styled-components/dist/types';

@@ -7,7 +7,7 @@ export default function DashboardPage() {
 			<PageHeader>
 				<h1>Leads</h1>
 			</PageHeader>
-			<LeadList/>
+			<LeadList />
 		</main>
 	);
 }

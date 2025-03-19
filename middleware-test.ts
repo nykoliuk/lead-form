@@ -1,7 +1,7 @@
 import {NextResponse} from 'next/server';
 import type {NextRequest} from 'next/server';
 
-export function middleware(request: NextRequest) {
+export function middlewareTest(request: NextRequest) {
 	const path: string = request.nextUrl.pathname;
 	const isDashboardRoute: boolean = path.startsWith('/dashboard');
 	const loginUrl: URL = new URL('/login', request.nextUrl.origin);
