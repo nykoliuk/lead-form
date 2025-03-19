@@ -1,6 +1,8 @@
 Lead Management Dashboard
 =========================
 
+Live Demo: [lead-form-git-main-mykhailo-nykoliuks-projects.vercel.app](https://lead-form-git-main-mykhailo-nykoliuks-projects.vercel.app)
+
 This project is a fully functional **Lead Management Dashboard** built with **React**, **TypeScript**, **Supabase**, 
 and **React Hook Form** for managing leads, including **resume uploads** and **sortable database records**.
 
@@ -12,7 +14,8 @@ Features
 *   **Forms with Validation**: Implemented using **React Hook Form** and **Zod**, ensuring robust validation.
 *   **Sortable & Editable Table**: Data from the database is **sortable**, and lead statuses can be changed directly from the table.
 *   **Dashboard Page (/dashboard)**: Displays leads in a structured, sortable table.
-*   **Authentication**: Includes login and logout functionality.
+*   **Authentication**: Includes login and logout functionality. **(Need to check if the dashboard freezes after 
+    login.)**
 
 Installation
 ------------
@@ -29,7 +32,7 @@ Installation
 3.  Set up environment variables in .env:
     ```plaintext
     NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-    SUPABASE_SERVICE_ROLE_KEY=your_supabase_anon_key
+    NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY=your_supabase_anon_key
     ```
 4.  Start the development server:
     ```bash
