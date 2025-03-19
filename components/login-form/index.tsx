@@ -2,7 +2,7 @@
 
 import {FC, useEffect, useState} from 'react';
 import {AppRouterInstance} from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import {ReadonlyURLSearchParams, useRouter, useSearchParams} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import {UseStateResult} from '@/hooks/use-state-result';
 import {FormProvider, useForm, UseFormReturn} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
