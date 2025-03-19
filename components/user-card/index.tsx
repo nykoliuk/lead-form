@@ -1,5 +1,4 @@
-import {FC, useEffect, useState} from 'react';
-import Cookies from 'js-cookie';
+import {FC, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {AppRouterInstance} from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import {defaultUser, User} from '@/types/user';
